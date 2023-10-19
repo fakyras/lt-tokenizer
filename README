@@ -1,0 +1,15 @@
+Simple word splitting logic for Lithuanian words. Words are deconstructed in to a form of prefix-root-suffix. Prefix and suffix rules are taken from https://github.com/ispell-lt/ispell-lt.
+
+Examples:
+```
+print(extract_prefix('pAsiBaiGusIuOse', prefixes))
+> ('pAsi', 'BaiGusIuOse')
+print(extract_suffix('pAsiBaiGusIuOse', suffixes))
+> ('usIuOse', 'pAsiBaiG')
+print(split_word('pAsiBaiGusIuOse', prefixes, suffixes))
+> ('pAsi', 'BaiG', 'usIuOse')
+
+text = "Baltieji rūmai patvirtino tolimojo nuotolio ATACMS raketų pristatymą į Ukrainą po to kai Kijevas paskelbė apie jų pirmąjį panaudojimą"
+print(" ".join([r[0]+'|'+r[1]+'|'+r[2] for r in [split_word(t, prefixes, suffixes) for t in text.split(' ')]]))
+> |Bal|tieji |rū|mai pa|tvirtin|o |tol|imojo nu|otol|io AT|AC|MS |raket|ų pri|stat|ymą |į| |Ukrain|ą |po| |to| |kai| |Kijev|as pa|skelb|ė api|e| |jų| |pirm|ąjį pa|naudoj|imą
+```
